@@ -2,17 +2,15 @@ import turtle
 turtle.speed(50000)
 def ctverec(strana):
     for x in range(4):
+        turtle.pendown()
         turtle.fd(strana)
         turtle.lt(90)
-def lidlzid(strana):
-    ctverec(strana)
-    turtle.penup()
-    turtle.lt(90)
-    turtle.fd(strana / 2)
-    turtle.lt(90)
-    turtle.fd(strana / 4)
-    turtle.lt(135)
-    turtle.pendown()
-    ctverec(strana)
-lidlzid(int(input("Zadej délku strany: ")))
+        turtle.penup()
+def rotace(strana, pocet):
+    for x in range(pocet):
+        ctverec(strana)
+        turtle.goto(strana / 4 * (-1), strana / 2)
+        turtle.rt(90 / pocet)
+        ctverec(strana)
+rotace(int(input("Zadej délku strany: ")), int(input("Zadej počet čtverců: ")))
 turtle.done()
